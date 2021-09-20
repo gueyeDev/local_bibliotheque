@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccueilController;
 
@@ -16,11 +17,14 @@ use App\Http\Controllers\AccueilController;
 
 Route::get('/', [AccueilController::class ,'index']);
 
-Route::get('create_bokk/', [AccueilController::class ,'create'])->name('book.create');
-Route::post('create_book/', [AccueilController::class ,'store'])->name('book.store');
+Route::get('create_bokk/', [AccueilController::class ,'create'])->middleware(['auth'])->name('book.create');
+Route::post('create_book/', [AccueilController::class ,'store'])->middleware(['auth'])->name('book.store');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $books= Book::all();
+    return view('dashboard',compact('books'));
 })->middleware(['auth'])->name('dashboard');
-
+Route::get('/test', function () {
+    return view('test');
+ });
 require __DIR__.'/auth.php';

@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Validator;
 class AccueilController extends Controller
 {
     public function index(){
-        $books= Book::all();
+        $books= Book::find(15);
+        
+        
+        //dd($books->image->path);
         return view('index', compact('books'));
     }
 
