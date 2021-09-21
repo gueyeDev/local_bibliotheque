@@ -31,15 +31,17 @@
       
       <div class=" grid grid-cols-3 gap-5 m-5 max-w-5xl m-auto">
         
+        @foreach ($books as $book )
+          
         
         <div class=" relative bg-white">
-          <img src="{{ $test }}" alt="mon image" class="w-full h-48 sm:h-56 object-cover" />
+          <img src="{{ substr(Storage::url($book->image->path),1) }}" alt="mon image" class="w-full h-full sm:h-56 object-cover" />
 
           <div class="px-10 py-6 mb-10 text-center">
-            <div class="text-2xl font-bold text-purple-500 mb-4">{{$books->title}}</div>
+            <div class="text-2xl font-bold text-purple-500 mb-4">{{$book->title}}</div>
             <div class=" overflow-auto border-2 h-20 mb-4"  >
             <span class="text-sm">
-              {{ $books->description }}
+              {{ $book->description }}
             </span>
           </div>
           </div>
@@ -47,6 +49,7 @@
           <button class="absolute bottom-0 w-full text-lg h-16 text-white font-extrabold bg-purple-500"><a href="{{ route('book.create')}}">Ajouter</a></button>
         
         </div>
+        @endforeach
 
         
       </div>

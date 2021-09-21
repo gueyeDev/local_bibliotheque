@@ -6,15 +6,18 @@ use App\Models\Book;
 use App\Models\Image;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 
 class AccueilController extends Controller
 {
     public function index(){
-        $books= Book::find(15);
-        
-        
+        $books= Book::all();
+       
+       // $test=Storage::url($books->image->path);
+        //$test=substr($test,1);
+        //dd(substr(Storage::url($books->image->path),1));
         //dd($books->image->path);
         return view('index', compact('books'));
     }

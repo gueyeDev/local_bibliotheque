@@ -18,11 +18,12 @@
                 @foreach ($books as $book)
               
               <div class=" relative grid-rows-3 bg-white">
-                <img src="https://i.stack.imgur.com/0TQbL.png" alt="" class="w-full sm:h-56 object-cover" />
+                <img src="{{ substr(Storage::url($book->image->path),1) }}" style="width:300px;
+                height:300x;" alt="image" class="w-full sm:h-56 object-cover" />
       
                 <div class="px-10 py-6 text-center">
                   <div class=" overflow-auto text-2xl font-bold text-purple-500 mb-4">{{$book->title}}</div>
-                  <div class=" overflow-auto border border-2 h-20 mb-4">
+                  <div class=" overflow-auto border border-2 h-30 mb-4">
                   <span class="text-sm">
                     {{ $book->description }}
                   </span>

@@ -22,8 +22,8 @@ class AuthorFactory extends Factory
     public function definition()
     {
         return [
-            'nom'=>$this->faker->sentence(),
-            'prenom'=>$this->faker->sentence(),
+            'nom'=>$this->faker->lastName(),
+            'prenom'=>$this->faker->firstName(),
             'Biographie'=>$this->faker->paragraph(),
             'created_at'=>now(),
         ];
